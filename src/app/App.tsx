@@ -3,6 +3,20 @@ import { Menu, X, Mail, MapPin } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import siterhofImage from "@/assets/6d3baf1e9f11b0d35ff065ff2762d6f43eaa0ec3.png";
 import carrieImage from "@/assets/745f36087ece507a0007262e4e434b5a7ab20b18.png";
+import kinderfeestje1 from "@/assets/kinderfeestjes/20230114_124351_resized_4.jpg";
+import kinderfeestje2 from "@/assets/kinderfeestjes/IMG_20190324_154948_resized_2.jpg";
+import kinderfeestje3 from "@/assets/kinderfeestjes/IMG_20190719_153103_resized.jpg";
+import kinderfeestje4 from "@/assets/kinderfeestjes/IMG_20200704_103035_resized_1.jpg";
+import creatie1 from "@/assets/kinderworkshops/creaties/20230430_190523-scaled.jpg";
+import creatie2 from "@/assets/kinderworkshops/creaties/IMG_20200229_122745_resized.jpg";
+import creatie3 from "@/assets/kinderworkshops/creaties/Pakjesboot-Sinterklaas.jpg";
+import creatie4 from "@/assets/kinderworkshops/creaties/rudolph.jpg";
+import zomervakantie1 from "@/assets/zomervakantie/20230719_141703_resized.jpg";
+import zomervakantie2 from "@/assets/zomervakantie/20230719_151342_resized.jpg";
+import zomervakantie3 from "@/assets/zomervakantie/20230719_161653_resized.jpg";
+import zomervakantie4 from "@/assets/zomervakantie/20230719_161908_resized.jpg";
+import zomervakantie5 from "@/assets/zomervakantie/IMG_20180718_153040_resized.jpg";
+
 import teenImage1 from "@/assets/959e6d2976b059b7982aa8a7898dea503c312ec4.png";
 import teenImage2 from "@/assets/acdeac8c21a3e492d22e4678bc103a7f6bd1a083.png";
 import teenImage3 from "@/assets/28e6ecf978ce332efa77faa849f8d44405cf6ad4.png";
@@ -22,6 +36,61 @@ export default function App() {
       setIsMenuOpen(false);
     }
   };
+
+  // SEO: Update meta tags based on active section
+  useEffect(() => {
+    const seoMetadata: Record<string, { title: string; description: string }> = {
+      home: {
+        title: "De Siterhof | Kinderfeestjes & Kinderworkshops Hillensberg",
+        description: "De Siterhof biedt creatieve kinderfeestjes, kinderworkshops en tienerfeestjes in Hillensberg (Selfkant). Kwaliteitsvol plezier voor kinderen!",
+      },
+      kinderfeestjes: {
+        title: "Kinderfeestjes De Siterhof | Creatieve Workshops voor Kinderen",
+        description: "Organiseer het perfecte kinderfeestje bij De Siterhof. Creatieve workshops, veel plezier en trots naar huis. Hele jaar door beschikbaar.",
+      },
+      kinderworkshops: {
+        title: "Kinderworkshops De Siterhof | Thema Creatieve Workshops",
+        description: "Maandelijkse thema-workshops voor kinderen (6+). Pasen, Moederdag, Sinterklaas, Kerst en zomervakantieprogramma. €16,50-€20,00 per kind.",
+      },
+      tienerfeestjes: {
+        title: "Tienerfeestjes De Siterhof | Workshops voor Tieners",
+        description: "Ook tieners zijn welkom bij De Siterhof! Creatieve feestjes en workshops voor jongeren. Prijzen vanaf €16,50 per persoon.",
+      },
+      over: {
+        title: "Over De Siterhof | Creatieve Boerderij Hillensberg",
+        description: "Leer De Siterhof kennen. Een sfeervolle locatie in een voormalige carréboerderij met creatieve workshops met natuurlijke materialen.",
+      },
+    };
+
+    const metadata = seoMetadata[activeSection] || seoMetadata.home;
+    document.title = metadata.title;
+    
+    // Update or create meta description
+    let metaDescription = document.querySelector("meta[name='description']");
+    if (!metaDescription) {
+      metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("name", "description");
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute("content", metadata.description);
+
+    // Update Open Graph tags for social sharing
+    let ogTitle = document.querySelector("meta[property='og:title']");
+    if (!ogTitle) {
+      ogTitle = document.createElement("meta");
+      ogTitle.setAttribute("property", "og:title");
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute("content", metadata.title);
+
+    let ogDescription = document.querySelector("meta[property='og:description']");
+    if (!ogDescription) {
+      ogDescription = document.createElement("meta");
+      ogDescription.setAttribute("property", "og:description");
+      document.head.appendChild(ogDescription);
+    }
+    ogDescription.setAttribute("content", metadata.description);
+  }, [activeSection]);
 
   // Update active section on scroll
   useEffect(() => {
@@ -143,7 +212,7 @@ export default function App() {
         id="home"
         className="pt-16 relative bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.85)), url(${heroBackground})`,
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5)), url(${heroBackground})`,
           minHeight: "600px",
         }}
       >
@@ -167,9 +236,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      {/* Main content will be added in next steps */}
-      <div id="kinderfeestjes" className="h-20"></div>
 
       {/* Kinderfeestjes Section */}
       <section id="kinderfeestjes" className="py-20 bg-white">
@@ -208,22 +274,22 @@ export default function App() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1762912913371-ccc0a5fca0ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwYmlydGhkYXklMjBwYXJ0eSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc3MDI4Mjg3Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={kinderfeestje1}
                 alt="Kinderfeestje"
                 className="w-full h-48 object-cover rounded-lg shadow-md"
               />
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1766932901295-d4185660341b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMGNyYWZ0cyUyMHdvcmtzaG9wJTIwY3JlYXRpdmV8ZW58MXx8fHwxNzcwMzIxNTI2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={kinderfeestje2}
                 alt="Creatieve workshop"
                 className="w-full h-48 object-cover rounded-lg shadow-md"
               />
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1690843857685-15c9a042d37b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMG91dGRvb3IlMjBnYXJkZW4lMjBwbGF5aW5nfGVufDF8fHx8MTc3MDMyMTUyN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={kinderfeestje3}
                 alt="Kinderen spelen in de tuin"
                 className="w-full h-48 object-cover rounded-lg shadow-md"
               />
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1748524291921-711d5a929e8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXJtJTIwYmFybiUyMHJ1cmFsJTIwY291bnRyeXNpZGV8ZW58MXx8fHwxNzcwMzIxNTI4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={kinderfeestje4}
                 alt="Boerderij"
                 className="w-full h-48 object-cover rounded-lg shadow-md"
               />
@@ -231,8 +297,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      <div id="kinderworkshops" className="h-20"></div>
 
       {/* Kinderworkshops Section */}
       <section id="kinderworkshops" className="py-20" style={{ backgroundColor: "#F4EFE9" }}>
@@ -242,6 +306,28 @@ export default function App() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
+            <div className="grid grid-cols-2 gap-4">
+              <ImageWithFallback
+                src={creatie1}
+                alt="Workshop voorbeeld 1"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={creatie2}
+                alt="Workshop voorbeeld 2"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={creatie3}
+                alt="Workshop voorbeeld 3"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={creatie4}
+                alt="Workshop voorbeeld 4"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+            </div>
             <div className="space-y-4 text-gray-700">
               <p>
                 Zomer of winter, lente of herfst. De Siterhof puilt uit van ideeën om iets bijzonders te maken. Iedere maand is er een
@@ -261,28 +347,6 @@ export default function App() {
                 <p className="text-gray-700">Dit zijn foto's van voorgaande workshops. Vraag per mail naar de actuele foto's.</p>
                 <p className="mt-2 text-gray-700">De minimumleeftijd van deze workshops is 6 jaar.</p>
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1766932901295-d4185660341b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMGNyYWZ0cyUyMHdvcmtzaG9wJTIwY3JlYXRpdmV8ZW58MXx8fHwxNzcwMzIxNTI2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Workshop voorbeeld 1"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1762912913371-ccc0a5fca0ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxraWRzJTIwYmlydGhkYXklMjBwYXJ0eSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc3MDI4Mjg3Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Workshop voorbeeld 2"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1690843857685-15c9a042d37b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMG91dGRvb3IlMjBnYXJkZW4lMjBwbGF5aW5nfGVufDF8fHx8MTc3MDMyMTUyN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Workshop voorbeeld 3"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1748524291921-711d5a929e8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXJtJTIwYmFybiUyMHJ1cmFsJTIwY291bnRyeXNpZGV8ZW58MXx8fHwxNzcwMzIxNTI4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Workshop voorbeeld 4"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
             </div>
           </div>
 
@@ -418,7 +482,7 @@ export default function App() {
               </div>
               <div>
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1769814153255-195ba5661524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdW1tZXIlMjB2YWNhdGlvbiUyMGtpZHMlMjBwaWNuaWN8ZW58MXx8fHwxNzcwMzIxNTMxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  src={zomervakantie1}
                   alt="Zomervakantie picknick"
                   className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
                 />
@@ -428,11 +492,34 @@ export default function App() {
                 </div>
               </div>
             </div>
+
+            {/* Photo gallery */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              <ImageWithFallback
+                src={zomervakantie2}
+                alt="Zomervakantie foto 1"
+                className="w-full aspect-video object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={zomervakantie3}
+                alt="Zomervakantie foto 2"
+                className="w-full aspect-video object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={zomervakantie4}
+                alt="Zomervakantie foto 3"
+                className="w-full aspect-video object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={zomervakantie5}
+                alt="Zomervakantie foto 4"
+                className="w-full aspect-video object-cover rounded-lg shadow-md"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <div id="tienerfeestjes" className="h-20"></div>
 
       {/* Tienerfeestjes Section */}
       <section id="tienerfeestjes" className="py-20 bg-white">
@@ -462,28 +549,23 @@ export default function App() {
             </div>
 
             {/* Workshop examples gallery */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-              <div className="col-span-2 md:col-span-1">
-                <img src={teenImage4} alt="Decoratieve vogelhuisjes workshop" className="w-full h-full object-cover rounded-lg shadow-lg" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              <div>
+                <img src={teenImage4} alt="Decoratieve vogelhuisjes workshop" className="w-full h-48 object-cover rounded-lg shadow-lg" />
               </div>
               <div>
-                <img src={teenImage1} alt="Droomvanger workshop" className="w-full h-64 object-cover rounded-lg shadow-lg" />
+                <img src={teenImage1} alt="Droomvanger workshop" className="w-full h-48 object-cover rounded-lg shadow-lg" />
               </div>
               <div>
-                <img src={teenImage2} alt="Sleutelhangers maken" className="w-full h-64 object-cover rounded-lg shadow-lg" />
+                <img src={teenImage2} alt="Sleutelhangers maken" className="w-full h-48 object-cover rounded-lg shadow-lg" />
               </div>
               <div>
-                <img src={teenImage3} alt="Creatieve knutselwerkjes" className="w-full h-64 object-cover rounded-lg shadow-lg" />
-              </div>
-              <div className="col-span-2">
-                <img src={teenImage5} alt="Moederdag kaart workshop" className="w-full h-64 object-cover rounded-lg shadow-lg" />
+                <img src={teenImage3} alt="Creatieve knutselwerkjes" className="w-full h-48 object-cover rounded-lg shadow-lg" />
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <div id="over" className="h-20"></div>
 
       {/* Over Section */}
       <section id="over" className="py-20" style={{ backgroundColor: "#F4EFE9" }}>
@@ -548,23 +630,30 @@ export default function App() {
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Locatie</h3>
                 </div>
-                <div className="text-gray-600 space-y-2 leading-relaxed">
+                <address className="text-gray-600 space-y-2 leading-relaxed not-italic">
                   <p className="font-semibold text-gray-900 text-lg">De Siterhof</p>
-                  <p>Bergstrasse 27</p>
-                  <p>52538 Hillensberg (Selfkant)</p>
+                  <a
+                    href="https://www.google.com/maps/search/Bergstrasse+27,+52538+Hillensberg+Selfkant"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block hover:underline transition-colors"
+                    style={{ color: "#C9968B" }}
+                  >
+                    <p>Bergstrasse 27</p>
+                    <p>52538 Hillensberg (Selfkant)</p>
+                  </a>
                   <div className="mt-4 pt-4 border-t border-gray-200">
                     <p className="text-sm font-medium" style={{ color: "#C9968B" }}>
                       Net over de Duitse grens
                     </p>
                   </div>
-                </div>
+                </address>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div id="contact" className="h-20"></div>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-white">

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: 
+
+Sitemap: https://www.siterhof.com/sitemap.xml
+
+# Specific rules for common crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
