@@ -1,2 +1,8 @@
-@import "tailwindcss" source(none);
+@import 'tailwindcss' source(none);
 @source '../**/*.{js,ts,jsx,tsx}';
+
+@theme {
+  --color-brand-primary: #c9968b;
+  --color-brand-hover: #b87e72;
+  --color-brand-light: #f4efe9;
+}

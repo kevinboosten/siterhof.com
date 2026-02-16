@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Mail, MapPin } from 'lucide-react';
 import { ImageWithFallback } from './components/figma/ImageWithFallback';
+
 import siterhofImage from '@/assets/6d3baf1e9f11b0d35ff065ff2762d6f43eaa0ec3.png';
 import carrieImage from '@/assets/745f36087ece507a0007262e4e434b5a7ab20b18.png';
 import kinderfeestje1 from '@/assets/kinderfeestjes/20230114_124351_resized_4.jpg';
@@ -27,13 +28,9 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  // Smooth scroll to section
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  // Close mobile menu on any link click
+  const closeMobileMenu = () => {
+    setIsMenuOpen(false);
   };
 
   // SEO: Update meta tags based on active section
@@ -115,6 +112,22 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleHashChange = () => {
+      const targetId = window.location.hash.replace('#', '');
+      if (targetId) {
+        setActiveSection(targetId);
+      }
+    };
+
+    if (window.location.hash) {
+      setTimeout(handleHashChange, 0);
+    }
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   const navItems = [
     { id: 'kinderfeestjes', label: 'Kinderfeestjes' },
     { id: 'kinderworkshops', label: 'Kinderworkshops' },
@@ -129,57 +142,47 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-2xl font-bold transition-colors"
-              style={{ color: '#C9968B' }}
+            <a
+              href="#home"
+              onClick={closeMobileMenu}
+              className="text-2xl font-bold transition-colors hover:opacity-80 cursor-pointer text-brand-primary"
             >
               De Siterhof
-            </button>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 transition-colors ${activeSection === item.id ? 'border-b-2' : 'text-gray-700'}`}
-                  style={
-                    activeSection === item.id ? { color: '#C9968B', borderColor: '#C9968B' } : {}
-                  }
-                  onMouseEnter={(e) => {
-                    if (activeSection !== item.id) {
-                      e.currentTarget.style.color = '#C9968B';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (activeSection !== item.id) {
-                      e.currentTarget.style.color = '';
-                    }
-                  }}
+                  href={`#${item.id}`}
+                  onClick={closeMobileMenu}
+                  className={`px-3 py-2 transition-colors cursor-pointer ${
+                    activeSection === item.id
+                      ? 'border-b-2 border-brand-primary text-brand-primary'
+                      : 'text-gray-700 hover:text-brand-primary'
+                  }`}
+                  aria-current={activeSection === item.id ? 'page' : undefined}
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-4 py-2 text-white rounded-md transition-colors"
-                style={{ backgroundColor: '#C9968B' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#B87E72';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#C9968B';
-                }}
+              <a
+                href="#contact"
+                onClick={closeMobileMenu}
+                className="px-4 py-2 text-white rounded-md transition-colors hover:bg-brand-hover cursor-pointer bg-brand-primary"
               >
                 Contact
-              </button>
+              </a>
             </div>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav"
+              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -188,35 +191,32 @@ export default function App() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
+          <nav id="mobile-nav" className="md:hidden bg-white border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-opacity-20 rounded-md"
-                  style={{ '--hover-bg': '#F4EFE9' } as React.CSSProperties}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#F4EFE9';
-                    e.currentTarget.style.color = '#C9968B';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '';
-                    e.currentTarget.style.color = '';
-                  }}
+                  href={`#${item.id}`}
+                  onClick={closeMobileMenu}
+                  className={`block w-full text-left px-3 py-2 rounded-md transition-colors cursor-pointer ${
+                    activeSection === item.id
+                      ? 'bg-brand-light text-brand-primary'
+                      : 'text-gray-700 hover:bg-brand-light hover:text-brand-primary'
+                  }`}
+                  aria-current={activeSection === item.id ? 'page' : undefined}
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="block w-full text-left px-3 py-2 text-white rounded-md"
-                style={{ backgroundColor: '#C9968B' }}
+              <a
+                href="#contact"
+                onClick={closeMobileMenu}
+                className="block w-full text-left px-3 py-2 text-white rounded-md transition-colors cursor-pointer hover:opacity-90 bg-brand-primary"
               >
                 Contact
-              </button>
+              </a>
             </div>
-          </div>
+          </nav>
         )}
       </nav>
 
@@ -237,14 +237,7 @@ export default function App() {
             </p>
             <a
               href="mailto:info@siterhof.com"
-              className="inline-block px-8 py-3 text-white rounded-lg transition-colors text-lg shadow-lg"
-              style={{ backgroundColor: '#C9968B' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#B87E72';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#C9968B';
-              }}
+              className="inline-block px-8 py-3 text-white rounded-lg transition-colors text-lg shadow-lg bg-brand-primary hover:bg-brand-hover"
             >
               Neem nu contact op
             </a>
@@ -257,9 +250,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kinderfeestjes</h2>
-            <p className="text-xl" style={{ color: '#C9968B' }}>
-              ...met een leuke plek voor kinderpicknicks
-            </p>
+            <p className="text-xl text-brand-primary">...met een leuke plek voor kinderpicknicks</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
@@ -278,7 +269,7 @@ export default function App() {
                   Er kan zelf iets lekkers meegenomen worden. Bij mooi weer kunnen de kinderen in de
                   tuin spelen.
                 </p>
-                <div className="p-6 rounded-lg mt-6" style={{ backgroundColor: '#F4EFE9' }}>
+                <div className="p-6 rounded-lg mt-6 bg-brand-light">
                   <p className="font-semibold text-gray-900 mb-2">Praktische informatie:</p>
                   <ul className="space-y-2 text-gray-700">
                     <li>• Duur: ongeveer 2,5 uur</li>
@@ -287,7 +278,7 @@ export default function App() {
                     <li>• Prijs: vanaf € 16,50 per kind</li>
                   </ul>
                 </div>
-                <p className="font-semibold" style={{ color: '#C9968B' }}>
+                <p className="font-semibold text-brand-primary">
                   Op deze site staan niet alle workshops. Neem contact met mij op via het
                   contactformulier en ik stuur je foto's van de workshops waaruit gekozen kan
                   worden!
@@ -321,7 +312,7 @@ export default function App() {
       </section>
 
       {/* Kinderworkshops Section */}
-      <section id="kinderworkshops" className="py-20" style={{ backgroundColor: '#F4EFE9' }}>
+      <section id="kinderworkshops" className="py-20 bg-brand-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kinderworkshops</h2>
@@ -387,25 +378,16 @@ export default function App() {
             <div className="overflow-x-auto mb-6">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr style={{ backgroundColor: '#F4EFE9' }}>
-                    <th
-                      className="border px-4 py-3 text-left font-semibold text-gray-900"
-                      style={{ borderColor: '#C9968B' }}
-                    >
+                  <tr className="bg-brand-light">
+                    <td className="border px-4 py-3 text-left font-semibold text-gray-900 border-brand-primary">
                       Maand
-                    </th>
-                    <th
-                      className="border px-4 py-3 text-left font-semibold text-gray-900"
-                      style={{ borderColor: '#C9968B' }}
-                    >
+                    </td>
+                    <td className="border px-4 py-3 text-left font-semibold text-gray-900 border-brand-primary">
                       Thema
-                    </th>
-                    <th
-                      className="border px-4 py-3 text-left font-semibold text-gray-900"
-                      style={{ borderColor: '#C9968B' }}
-                    >
+                    </td>
+                    <td className="border px-4 py-3 text-left font-semibold text-gray-900 border-brand-primary">
                       Data
-                    </th>
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
@@ -421,10 +403,7 @@ export default function App() {
                   </tr>
                   <tr>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">Maart</td>
-                    <td
-                      className="border border-gray-200 px-4 py-3 font-semibold"
-                      style={{ color: '#C9968B' }}
-                    >
+                    <td className="border border-gray-200 px-4 py-3 font-semibold text-brand-primary">
                       Pasen
                     </td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">
@@ -438,10 +417,7 @@ export default function App() {
                   </tr>
                   <tr>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">Mei</td>
-                    <td
-                      className="border border-gray-200 px-4 py-3 font-semibold"
-                      style={{ color: '#C9968B' }}
-                    >
+                    <td className="border border-gray-200 px-4 py-3 font-semibold text-brand-primary">
                       Moederdag
                     </td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">
@@ -453,11 +429,10 @@ export default function App() {
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">-</td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">-</td>
                   </tr>
-                  <tr style={{ backgroundColor: '#F4EFE9' }}>
+                  <tr className="bg-brand-light">
                     <td
-                      className="border px-4 py-3 font-semibold text-gray-900"
+                      className="border px-4 py-3 font-semibold text-gray-900 border-brand-primary"
                       colSpan={3}
-                      style={{ borderColor: '#C9968B' }}
                     >
                       In de zomervakantie, van 13 juli tot 24 augustus, is er elke woensdagmiddag
                       een speciaal programma voor kinderen. Het programma bestaat uit een workshop,
@@ -477,10 +452,7 @@ export default function App() {
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">November</td>
-                    <td
-                      className="border border-gray-200 px-4 py-3 font-semibold"
-                      style={{ color: '#C9968B' }}
-                    >
+                    <td className="border border-gray-200 px-4 py-3 font-semibold text-brand-primary">
                       Sinterklaas
                     </td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">
@@ -489,10 +461,7 @@ export default function App() {
                   </tr>
                   <tr>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">December</td>
-                    <td
-                      className="border border-gray-200 px-4 py-3 font-semibold"
-                      style={{ color: '#C9968B' }}
-                    >
+                    <td className="border border-gray-200 px-4 py-3 font-semibold text-brand-primary">
                       Kerst
                     </td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">
@@ -509,18 +478,14 @@ export default function App() {
                 <strong>14:00 tot 16:00 uur</strong>. Op <strong>vrijdag</strong> kunnen de kinderen
                 genieten van een workshop van <strong>15:00 tot 17:00 uur</strong>.
               </p>
-              <p className="font-semibold text-lg" style={{ color: '#C9968B' }}>
+              <p className="font-semibold text-lg text-brand-primary">
                 Voor € 15,00 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de
                 Siterhof!
               </p>
               <p className="text-sm">
                 Zoals altijd wordt er nog een aparte mail met foto gestuurd. Wil je dit ook
                 ontvangen, stuur ons even je mailadres naar{' '}
-                <a
-                  href="mailto:info@siterhof.com"
-                  className="hover:underline"
-                  style={{ color: '#C9968B' }}
-                >
+                <a href="mailto:info@siterhof.com" className="hover:underline text-brand-primary">
                   info@siterhof.com
                 </a>
               </p>
@@ -539,18 +504,14 @@ export default function App() {
                   kinderen. De kinderen kunnen dan bij ons terecht voor een gezellige middag.
                 </p>
                 <div className="space-y-3 text-gray-700">
-                  <p className="font-semibold" style={{ color: '#C9968B' }}>
-                    Aanvang: 12:30 uur
-                  </p>
+                  <p className="font-semibold text-brand-primary">Aanvang: 12:30 uur</p>
                   <p>We beginnen met een gezellige picknick in de tuin!</p>
                   <p>
                     Daarna starten we met de workshop. In de pauze genieten we van iets lekkers en
                     iets fris te drinken en spelen we in de tuin en zijn er allerlei spelletjes te
                     spelen.
                   </p>
-                  <p className="font-semibold" style={{ color: '#C9968B' }}>
-                    Einde: 16:30 uur
-                  </p>
+                  <p className="font-semibold text-brand-primary">Einde: 16:30 uur</p>
                   <p>
                     De kinderen kunnen kiezen uit verschillende workshops, vraag naar de
                     mogelijkheden.
@@ -563,10 +524,7 @@ export default function App() {
                   alt="Zomervakantie picknick"
                   className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
                 />
-                <div
-                  className="text-white p-6 rounded-lg text-center"
-                  style={{ backgroundColor: '#C9968B' }}
-                >
+                <div className="text-white p-6 rounded-lg text-center bg-brand-primary">
                   <p className="text-xl font-bold mb-2">€ 20,00 per kind</p>
                   <p className="text-sm">
                     Aanmelden voor deze gezellige middag kan alleen via onze site.
@@ -615,19 +573,12 @@ export default function App() {
                 Ook de tieners zijn uiteraard welkom. De prijzen zijn vanaf € 16,50 per persoon.
                 Vraag naar de mogelijkheden.
               </p>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-6 py-3 text-white rounded-lg transition-colors"
-                style={{ backgroundColor: '#C9968B' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#B87E72';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#C9968B';
-                }}
+              <a
+                href="#contact"
+                className="inline-block px-6 py-3 text-white rounded-lg transition-colors cursor-pointer bg-brand-primary hover:bg-brand-hover"
               >
                 Neem contact op
-              </button>
+              </a>
             </div>
 
             {/* Workshop examples gallery */}
@@ -666,7 +617,7 @@ export default function App() {
       </section>
 
       {/* Over Section */}
-      <section id="over" className="py-20" style={{ backgroundColor: '#F4EFE9' }}>
+      <section id="over" className="py-20 bg-brand-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Over De Siterhof</h2>
@@ -680,7 +631,6 @@ export default function App() {
                     src={carrieImage}
                     alt="Carrie"
                     className="w-20 h-20 rounded-full object-cover ring-4"
-                    style={{ ringColor: '#F4EFE9' }}
                   />
                   <h3 className="text-2xl font-bold text-gray-900">Carrie</h3>
                 </div>
@@ -705,7 +655,7 @@ export default function App() {
                     alle creatieve workshops ligt de nadruk op het werken met natuurlijke
                     materialen.
                   </p>
-                  <p className="font-semibold pt-2" style={{ color: '#C9968B' }}>
+                  <p className="font-semibold pt-2 text-brand-primary">
                     Kom gerust eens een keer langs voor een kopje koffie!
                   </p>
                 </div>
@@ -733,8 +683,8 @@ export default function App() {
 
               <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: '#F4EFE9' }}>
-                    <MapPin style={{ color: '#C9968B' }} size={24} />
+                  <div className="p-3 rounded-lg bg-brand-light">
+                    <MapPin className="text-brand-primary" size={24} />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Locatie</h3>
                 </div>
@@ -744,14 +694,13 @@ export default function App() {
                     href="https://www.google.com/maps/search/Bergstrasse+27,+52538+Hillensberg+Selfkant"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block hover:underline transition-colors"
-                    style={{ color: '#C9968B' }}
+                    className="block hover:underline transition-colors text-brand-primary"
                   >
                     <p>Bergstrasse 27</p>
                     <p>52538 Hillensberg (Selfkant)</p>
                   </a>
                   <div className="mt-4 pt-4 border-t border-gray-200">
-                    <p className="text-sm font-medium" style={{ color: '#C9968B' }}>
+                    <p className="text-sm font-medium text-brand-primary">
                       Net over de Duitse grens
                     </p>
                   </div>
@@ -771,22 +720,12 @@ export default function App() {
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <div
-              className="p-8 rounded-lg shadow-lg text-center"
-              style={{ backgroundColor: '#F4EFE9' }}
-            >
-              <Mail className="mx-auto mb-4" style={{ color: '#C9968B' }} size={48} />
+            <div className="p-8 rounded-lg shadow-lg text-center bg-brand-light">
+              <Mail className="mx-auto mb-4 text-brand-primary" size={48} />
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Stuur ons een e-mail</h3>
               <a
                 href="mailto:info@siterhof.com"
-                className="inline-block px-8 py-3 text-white rounded-lg transition-colors text-lg shadow-lg"
-                style={{ backgroundColor: '#C9968B' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#B87E72';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#C9968B';
-                }}
+                className="inline-block px-8 py-3 text-white rounded-lg transition-colors text-lg shadow-lg bg-brand-primary hover:bg-brand-hover"
               >
                 Neem nu contact op
               </a>
@@ -796,8 +735,7 @@ export default function App() {
                   href="https://www.facebook.com/DeSiterhof"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline transition-colors"
-                  style={{ color: '#C9968B' }}
+                  className="hover:underline transition-colors text-brand-primary"
                 >
                   Facebook
                 </a>
