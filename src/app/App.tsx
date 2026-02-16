@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X, Mail, MapPin } from "lucide-react";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import siterhofImage from "@/assets/6d3baf1e9f11b0d35ff065ff2762d6f43eaa0ec3.png";
@@ -655,7 +655,18 @@ export default function App() {
               >
                 Neem nu contact op
               </a>
-              <p className="mt-6 text-gray-700">Volg De Siterhof natuurlijk ook op Facebook</p>
+              <p className="mt-6 text-gray-700">
+                Volg De Siterhof natuurlijk ook op{" "}
+                <a
+                  href="https://www.facebook.com/DeSiterhof"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline transition-colors"
+                  style={{ color: "#C9968B" }}
+                >
+                  Facebook
+                </a>
+              </p>
             </div>
           </div>
         </div>
