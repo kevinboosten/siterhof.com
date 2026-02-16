@@ -1,11 +1,39 @@
+# Siterhof website
 
-  # One-page business website
+Siterhof is a one-page business website built with Vite, React, and Tailwind CSS.
 
-  This is a code bundle for One-page business website. The original project is available at https://www.figma.com/design/bcrLUqLUyVjIJ4lzkoggZi/One-page-business-website.
+## Getting started
 
-  ## Running the code
+Install dependencies:
 
-  Run `npm i` to install the dependencies.
+```
+npm i
+```
 
-  Run `npm run dev` to start the development server.
-  
+Start the development server:
+
+```
+npm run dev
+```
+
+Build for production:
+
+```
+npm run build
+```
+
+Preview the production build:
+
+```
+npm run preview
+```
+
+Format the codebase:
+
+```
+npm run format
+```
+
+## Deployment
+
+This site is deployed to GitHub Pages via the workflow in [.github/workflows/deploy.yml](.github/workflows/deploy.yml). The custom domain is managed by the `public/CNAME` file.

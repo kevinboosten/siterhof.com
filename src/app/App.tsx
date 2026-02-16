@@ -1,38 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { Menu, X, Mail, MapPin } from "lucide-react";
-import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import siterhofImage from "@/assets/6d3baf1e9f11b0d35ff065ff2762d6f43eaa0ec3.png";
-import carrieImage from "@/assets/745f36087ece507a0007262e4e434b5a7ab20b18.png";
-import kinderfeestje1 from "@/assets/kinderfeestjes/20230114_124351_resized_4.jpg";
-import kinderfeestje2 from "@/assets/kinderfeestjes/IMG_20190324_154948_resized_2.jpg";
-import kinderfeestje3 from "@/assets/kinderfeestjes/IMG_20190719_153103_resized.jpg";
-import kinderfeestje4 from "@/assets/kinderfeestjes/IMG_20200704_103035_resized_1.jpg";
-import creatie1 from "@/assets/kinderworkshops/creaties/20230430_190523-scaled.jpg";
-import creatie2 from "@/assets/kinderworkshops/creaties/IMG_20200229_122745_resized.jpg";
-import creatie3 from "@/assets/kinderworkshops/creaties/Pakjesboot-Sinterklaas.jpg";
-import creatie4 from "@/assets/kinderworkshops/creaties/rudolph.jpg";
-import zomervakantie1 from "@/assets/zomervakantie/20230719_141703_resized.jpg";
-import zomervakantie2 from "@/assets/zomervakantie/20230719_151342_resized.jpg";
-import zomervakantie3 from "@/assets/zomervakantie/20230719_161653_resized.jpg";
-import zomervakantie4 from "@/assets/zomervakantie/20230719_161908_resized.jpg";
-import zomervakantie5 from "@/assets/zomervakantie/IMG_20180718_153040_resized.jpg";
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Mail, MapPin } from 'lucide-react';
+import { ImageWithFallback } from './components/figma/ImageWithFallback';
+import siterhofImage from '@/assets/6d3baf1e9f11b0d35ff065ff2762d6f43eaa0ec3.png';
+import carrieImage from '@/assets/745f36087ece507a0007262e4e434b5a7ab20b18.png';
+import kinderfeestje1 from '@/assets/kinderfeestjes/20230114_124351_resized_4.jpg';
+import kinderfeestje2 from '@/assets/kinderfeestjes/IMG_20190324_154948_resized_2.jpg';
+import kinderfeestje3 from '@/assets/kinderfeestjes/IMG_20190719_153103_resized.jpg';
+import kinderfeestje4 from '@/assets/kinderfeestjes/IMG_20200704_103035_resized_1.jpg';
+import creatie1 from '@/assets/kinderworkshops/creaties/20230430_190523-scaled.jpg';
+import creatie2 from '@/assets/kinderworkshops/creaties/IMG_20200229_122745_resized.jpg';
+import creatie3 from '@/assets/kinderworkshops/creaties/Pakjesboot-Sinterklaas.jpg';
+import creatie4 from '@/assets/kinderworkshops/creaties/rudolph.jpg';
+import zomervakantie1 from '@/assets/zomervakantie/20230719_141703_resized.jpg';
+import zomervakantie2 from '@/assets/zomervakantie/20230719_151342_resized.jpg';
+import zomervakantie3 from '@/assets/zomervakantie/20230719_161653_resized.jpg';
+import zomervakantie4 from '@/assets/zomervakantie/20230719_161908_resized.jpg';
+import zomervakantie5 from '@/assets/zomervakantie/IMG_20180718_153040_resized.jpg';
 
-import teenImage1 from "@/assets/959e6d2976b059b7982aa8a7898dea503c312ec4.png";
-import teenImage2 from "@/assets/acdeac8c21a3e492d22e4678bc103a7f6bd1a083.png";
-import teenImage3 from "@/assets/28e6ecf978ce332efa77faa849f8d44405cf6ad4.png";
-import teenImage4 from "@/assets/99bd3955d36ab88561e0d36dbe678b24e422d120.png";
-import teenImage5 from "@/assets/b3a8cd65eee248961357cd95e82063faaef0b0f2.png";
-import heroBackground from "@/assets/26496142eb08b4302f1c4f974565f899b474aba9.png";
+import teenImage1 from '@/assets/959e6d2976b059b7982aa8a7898dea503c312ec4.png';
+import teenImage2 from '@/assets/acdeac8c21a3e492d22e4678bc103a7f6bd1a083.png';
+import teenImage3 from '@/assets/28e6ecf978ce332efa77faa849f8d44405cf6ad4.png';
+import teenImage4 from '@/assets/99bd3955d36ab88561e0d36dbe678b24e422d120.png';
+import heroBackground from '@/assets/26496142eb08b4302f1c4f974565f899b474aba9.png';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState('home');
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
     }
   };
@@ -41,29 +40,29 @@ export default function App() {
   useEffect(() => {
     const seoMetadata: Record<string, { title: string; description: string }> = {
       home: {
-        title: "De Siterhof | Kinderfeestjes & Kinderworkshops Hillensberg",
+        title: 'De Siterhof | Kinderfeestjes & Kinderworkshops Hillensberg',
         description:
-          "De Siterhof biedt creatieve kinderfeestjes, kinderworkshops en tienerfeestjes in Hillensberg (Selfkant). Kwaliteitsvol plezier voor kinderen!",
+          'De Siterhof biedt creatieve kinderfeestjes, kinderworkshops en tienerfeestjes in Hillensberg (Selfkant). Kwaliteitsvol plezier voor kinderen!',
       },
       kinderfeestjes: {
-        title: "Kinderfeestjes De Siterhof | Creatieve Workshops voor Kinderen",
+        title: 'Kinderfeestjes De Siterhof | Creatieve Workshops voor Kinderen',
         description:
-          "Organiseer het perfecte kinderfeestje bij De Siterhof. Creatieve workshops, veel plezier en trots naar huis. Hele jaar door beschikbaar.",
+          'Organiseer het perfecte kinderfeestje bij De Siterhof. Creatieve workshops, veel plezier en trots naar huis. Hele jaar door beschikbaar.',
       },
       kinderworkshops: {
-        title: "Kinderworkshops De Siterhof | Thema Creatieve Workshops",
+        title: 'Kinderworkshops De Siterhof | Thema Creatieve Workshops',
         description:
-          "Maandelijkse thema-workshops voor kinderen (6+). Pasen, Moederdag, Sinterklaas, Kerst en zomervakantieprogramma. € 16,50-€ 20,00 per kind.",
+          'Maandelijkse thema-workshops voor kinderen (6+). Pasen, Moederdag, Sinterklaas, Kerst en zomervakantieprogramma. € 16,50-€ 20,00 per kind.',
       },
       tienerfeestjes: {
-        title: "Tienerfeestjes De Siterhof | Workshops voor Tieners",
+        title: 'Tienerfeestjes De Siterhof | Workshops voor Tieners',
         description:
-          "Ook tieners zijn welkom bij De Siterhof! Creatieve feestjes en workshops voor jongeren. Prijzen vanaf €16,50 per persoon.",
+          'Ook tieners zijn welkom bij De Siterhof! Creatieve feestjes en workshops voor jongeren. Prijzen vanaf €16,50 per persoon.',
       },
       over: {
-        title: "Over De Siterhof | Creatieve Boerderij Hillensberg",
+        title: 'Over De Siterhof | Creatieve Boerderij Hillensberg',
         description:
-          "Leer De Siterhof kennen. Een sfeervolle locatie in een voormalige carréboerderij met creatieve workshops met natuurlijke materialen.",
+          'Leer De Siterhof kennen. Een sfeervolle locatie in een voormalige carréboerderij met creatieve workshops met natuurlijke materialen.',
       },
     };
 
@@ -73,34 +72,34 @@ export default function App() {
     // Update or create meta description
     let metaDescription = document.querySelector("meta[name='description']");
     if (!metaDescription) {
-      metaDescription = document.createElement("meta");
-      metaDescription.setAttribute("name", "description");
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute("content", metadata.description);
+    metaDescription.setAttribute('content', metadata.description);
 
     // Update Open Graph tags for social sharing
     let ogTitle = document.querySelector("meta[property='og:title']");
     if (!ogTitle) {
-      ogTitle = document.createElement("meta");
-      ogTitle.setAttribute("property", "og:title");
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
       document.head.appendChild(ogTitle);
     }
-    ogTitle.setAttribute("content", metadata.title);
+    ogTitle.setAttribute('content', metadata.title);
 
     let ogDescription = document.querySelector("meta[property='og:description']");
     if (!ogDescription) {
-      ogDescription = document.createElement("meta");
-      ogDescription.setAttribute("property", "og:description");
+      ogDescription = document.createElement('meta');
+      ogDescription.setAttribute('property', 'og:description');
       document.head.appendChild(ogDescription);
     }
-    ogDescription.setAttribute("content", metadata.description);
+    ogDescription.setAttribute('content', metadata.description);
   }, [activeSection]);
 
   // Update active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "kinderfeestjes", "kinderworkshops", "tienerfeestjes", "over"];
+      const sections = ['home', 'kinderfeestjes', 'kinderworkshops', 'tienerfeestjes', 'over'];
       const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -112,15 +111,15 @@ export default function App() {
       if (current) setActiveSection(current);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { id: "kinderfeestjes", label: "Kinderfeestjes" },
-    { id: "kinderworkshops", label: "Kinderworkshops" },
-    { id: "tienerfeestjes", label: "Tienerfeestjes" },
-    { id: "over", label: "Over" },
+    { id: 'kinderfeestjes', label: 'Kinderfeestjes' },
+    { id: 'kinderworkshops', label: 'Kinderworkshops' },
+    { id: 'tienerfeestjes', label: 'Tienerfeestjes' },
+    { id: 'over', label: 'Over' },
   ];
 
   return (
@@ -130,7 +129,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <button onClick={() => scrollToSection("home")} className="text-2xl font-bold transition-colors" style={{ color: "#C9968B" }}>
+            <button
+              onClick={() => scrollToSection('home')}
+              className="text-2xl font-bold transition-colors"
+              style={{ color: '#C9968B' }}
+            >
               De Siterhof
             </button>
 
@@ -140,16 +143,18 @@ export default function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 transition-colors ${activeSection === item.id ? "border-b-2" : "text-gray-700"}`}
-                  style={activeSection === item.id ? { color: "#C9968B", borderColor: "#C9968B" } : {}}
+                  className={`px-3 py-2 transition-colors ${activeSection === item.id ? 'border-b-2' : 'text-gray-700'}`}
+                  style={
+                    activeSection === item.id ? { color: '#C9968B', borderColor: '#C9968B' } : {}
+                  }
                   onMouseEnter={(e) => {
                     if (activeSection !== item.id) {
-                      e.currentTarget.style.color = "#C9968B";
+                      e.currentTarget.style.color = '#C9968B';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (activeSection !== item.id) {
-                      e.currentTarget.style.color = "";
+                      e.currentTarget.style.color = '';
                     }
                   }}
                 >
@@ -157,14 +162,14 @@ export default function App() {
                 </button>
               ))}
               <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection('contact')}
                 className="px-4 py-2 text-white rounded-md transition-colors"
-                style={{ backgroundColor: "#C9968B" }}
+                style={{ backgroundColor: '#C9968B' }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#B87E72";
+                  e.currentTarget.style.backgroundColor = '#B87E72';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C9968B";
+                  e.currentTarget.style.backgroundColor = '#C9968B';
                 }}
               >
                 Contact
@@ -172,7 +177,10 @@ export default function App() {
             </div>
 
             {/* Mobile menu button */}
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -187,23 +195,23 @@ export default function App() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:bg-opacity-20 rounded-md"
-                  style={{ "--hover-bg": "#F4EFE9" } as React.CSSProperties}
+                  style={{ '--hover-bg': '#F4EFE9' } as React.CSSProperties}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#F4EFE9";
-                    e.currentTarget.style.color = "#C9968B";
+                    e.currentTarget.style.backgroundColor = '#F4EFE9';
+                    e.currentTarget.style.color = '#C9968B';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "";
-                    e.currentTarget.style.color = "";
+                    e.currentTarget.style.backgroundColor = '';
+                    e.currentTarget.style.color = '';
                   }}
                 >
                   {item.label}
                 </button>
               ))}
               <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection('contact')}
                 className="block w-full text-left px-3 py-2 text-white rounded-md"
-                style={{ backgroundColor: "#C9968B" }}
+                style={{ backgroundColor: '#C9968B' }}
               >
                 Contact
               </button>
@@ -218,22 +226,24 @@ export default function App() {
         className="pt-16 relative bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5)), url(${heroBackground})`,
-          minHeight: "600px",
+          minHeight: '600px',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">De Siterhof</h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8">...een boerderij waar je terecht kunt voor creatieve kinderworkshops</p>
+            <p className="text-xl md:text-2xl text-gray-600 mb-8">
+              ...een boerderij waar je terecht kunt voor creatieve kinderworkshops
+            </p>
             <a
               href="mailto:info@siterhof.com"
               className="inline-block px-8 py-3 text-white rounded-lg transition-colors text-lg shadow-lg"
-              style={{ backgroundColor: "#C9968B" }}
+              style={{ backgroundColor: '#C9968B' }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#B87E72";
+                e.currentTarget.style.backgroundColor = '#B87E72';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#C9968B";
+                e.currentTarget.style.backgroundColor = '#C9968B';
               }}
             >
               Neem nu contact op
@@ -247,22 +257,28 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kinderfeestjes</h2>
-            <p className="text-xl" style={{ color: "#C9968B" }}>
+            <p className="text-xl" style={{ color: '#C9968B' }}>
               ...met een leuke plek voor kinderpicknicks
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Kinderfeestjes het hele jaar door!</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Kinderfeestjes het hele jaar door!
+              </h3>
               <div className="space-y-4 text-gray-700">
                 <p>
-                  Mooi of slecht weer, een kinderfeestje is altijd gezellig op de Siterhof. In een van de schuren op de boerderij is de
-                  workshopruimte ingericht en gaan de kinderen creatief aan de slag.
+                  Mooi of slecht weer, een kinderfeestje is altijd gezellig op de Siterhof. In een
+                  van de schuren op de boerderij is de workshopruimte ingericht en gaan de kinderen
+                  creatief aan de slag.
                 </p>
                 <p>Halverwege is er een pauze. Iedereen krijgt dan van ons wat te drinken.</p>
-                <p>Er kan zelf iets lekkers meegenomen worden. Bij mooi weer kunnen de kinderen in de tuin spelen.</p>
-                <div className="p-6 rounded-lg mt-6" style={{ backgroundColor: "#F4EFE9" }}>
+                <p>
+                  Er kan zelf iets lekkers meegenomen worden. Bij mooi weer kunnen de kinderen in de
+                  tuin spelen.
+                </p>
+                <div className="p-6 rounded-lg mt-6" style={{ backgroundColor: '#F4EFE9' }}>
                   <p className="font-semibold text-gray-900 mb-2">Praktische informatie:</p>
                   <ul className="space-y-2 text-gray-700">
                     <li>• Duur: ongeveer 2,5 uur</li>
@@ -271,28 +287,41 @@ export default function App() {
                     <li>• Prijs: vanaf € 16,50 per kind</li>
                   </ul>
                 </div>
-                <p className="font-semibold" style={{ color: "#C9968B" }}>
-                  Op deze site staan niet alle workshops. Neem contact met mij op via het contactformulier en ik stuur je foto's van de
-                  workshops waaruit gekozen kan worden!
+                <p className="font-semibold" style={{ color: '#C9968B' }}>
+                  Op deze site staan niet alle workshops. Neem contact met mij op via het
+                  contactformulier en ik stuur je foto's van de workshops waaruit gekozen kan
+                  worden!
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <ImageWithFallback src={kinderfeestje1} alt="Kinderfeestje" className="w-full h-48 object-cover rounded-lg shadow-md" />
-              <ImageWithFallback src={kinderfeestje2} alt="Creatieve workshop" className="w-full h-48 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback
+                src={kinderfeestje1}
+                alt="Kinderfeestje"
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={kinderfeestje2}
+                alt="Creatieve workshop"
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
               <ImageWithFallback
                 src={kinderfeestje3}
                 alt="Kinderen spelen in de tuin"
                 className="w-full h-48 object-cover rounded-lg shadow-md"
               />
-              <ImageWithFallback src={kinderfeestje4} alt="Boerderij" className="w-full h-48 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback
+                src={kinderfeestje4}
+                alt="Boerderij"
+                className="w-full h-48 object-cover rounded-lg shadow-md"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Kinderworkshops Section */}
-      <section id="kinderworkshops" className="py-20" style={{ backgroundColor: "#F4EFE9" }}>
+      <section id="kinderworkshops" className="py-20" style={{ backgroundColor: '#F4EFE9' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kinderworkshops</h2>
@@ -300,48 +329,81 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
             <div className="grid grid-cols-2 gap-4">
-              <ImageWithFallback src={creatie1} alt="Workshop voorbeeld 1" className="w-full h-40 object-cover rounded-lg shadow-md" />
-              <ImageWithFallback src={creatie2} alt="Workshop voorbeeld 2" className="w-full h-40 object-cover rounded-lg shadow-md" />
-              <ImageWithFallback src={creatie3} alt="Workshop voorbeeld 3" className="w-full h-40 object-cover rounded-lg shadow-md" />
-              <ImageWithFallback src={creatie4} alt="Workshop voorbeeld 4" className="w-full h-40 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback
+                src={creatie1}
+                alt="Workshop voorbeeld 1"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={creatie2}
+                alt="Workshop voorbeeld 2"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={creatie3}
+                alt="Workshop voorbeeld 3"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
+              <ImageWithFallback
+                src={creatie4}
+                alt="Workshop voorbeeld 4"
+                className="w-full h-40 object-cover rounded-lg shadow-md"
+              />
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
-                Zomer of winter, lente of herfst. De Siterhof puilt uit van ideeën om iets bijzonders te maken. Iedere maand is er een
-                thema-workshop.
+                Zomer of winter, lente of herfst. De Siterhof puilt uit van ideeën om iets
+                bijzonders te maken. Iedere maand is er een thema-workshop.
               </p>
               <p>
-                Ons doel is dat iedereen zo veel mogelijk plezier aan de workshop beleefd en met een trots en tevreden gevoel naar huis
-                gaat. In de pauze krijgen de kinderen wat lekkers.
+                Ons doel is dat iedereen zo veel mogelijk plezier aan de workshop beleefd en met een
+                trots en tevreden gevoel naar huis gaat. In de pauze krijgen de kinderen wat
+                lekkers.
               </p>
               <p>
-                Naast kinderfeestjes geven we ook nog themaworkshops voor de kinderen. Via mail sturen we een beschrijving met foto van de
-                themaworkshops (Pasen, Moederdag, Sinterklaas en Kerst). Wil je hiervan op de hoogte blijven meld je dan aan in ons
+                Naast kinderfeestjes geven we ook nog themaworkshops voor de kinderen. Via mail
+                sturen we een beschrijving met foto van de themaworkshops (Pasen, Moederdag,
+                Sinterklaas en Kerst). Wil je hiervan op de hoogte blijven meld je dan aan in ons
                 mailbestand.
               </p>
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <p className="font-semibold text-gray-900 mb-2">Let op:</p>
-                <p className="text-gray-700">Dit zijn foto's van voorgaande workshops. Vraag per mail naar de actuele foto's.</p>
-                <p className="mt-2 text-gray-700">De minimumleeftijd van deze workshops is 6 jaar.</p>
+                <p className="text-gray-700">
+                  Dit zijn foto's van voorgaande workshops. Vraag per mail naar de actuele foto's.
+                </p>
+                <p className="mt-2 text-gray-700">
+                  De minimumleeftijd van deze workshops is 6 jaar.
+                </p>
               </div>
             </div>
           </div>
 
           {/* Jaaroverzicht - Annual Schedule */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-10 mt-6 text-center">Jaaroverzicht Kinderworkshops 🗓️</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-10 mt-6 text-center">
+              Jaaroverzicht Kinderworkshops 🗓️
+            </h3>
 
             <div className="overflow-x-auto mb-6">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr style={{ backgroundColor: "#F4EFE9" }}>
-                    <th className="border px-4 py-3 text-left font-semibold text-gray-900" style={{ borderColor: "#C9968B" }}>
+                  <tr style={{ backgroundColor: '#F4EFE9' }}>
+                    <th
+                      className="border px-4 py-3 text-left font-semibold text-gray-900"
+                      style={{ borderColor: '#C9968B' }}
+                    >
                       Maand
                     </th>
-                    <th className="border px-4 py-3 text-left font-semibold text-gray-900" style={{ borderColor: "#C9968B" }}>
+                    <th
+                      className="border px-4 py-3 text-left font-semibold text-gray-900"
+                      style={{ borderColor: '#C9968B' }}
+                    >
                       Thema
                     </th>
-                    <th className="border px-4 py-3 text-left font-semibold text-gray-900" style={{ borderColor: "#C9968B" }}>
+                    <th
+                      className="border px-4 py-3 text-left font-semibold text-gray-900"
+                      style={{ borderColor: '#C9968B' }}
+                    >
                       Data
                     </th>
                   </tr>
@@ -359,10 +421,15 @@ export default function App() {
                   </tr>
                   <tr>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">Maart</td>
-                    <td className="border border-gray-200 px-4 py-3 font-semibold" style={{ color: "#C9968B" }}>
+                    <td
+                      className="border border-gray-200 px-4 py-3 font-semibold"
+                      style={{ color: '#C9968B' }}
+                    >
                       Pasen
                     </td>
-                    <td className="border border-gray-200 px-4 py-3 text-gray-700">woensdag 18, zaterdag 21</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-700">
+                      woensdag 18, zaterdag 21
+                    </td>
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">April</td>
@@ -371,21 +438,31 @@ export default function App() {
                   </tr>
                   <tr>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">Mei</td>
-                    <td className="border border-gray-200 px-4 py-3 font-semibold" style={{ color: "#C9968B" }}>
+                    <td
+                      className="border border-gray-200 px-4 py-3 font-semibold"
+                      style={{ color: '#C9968B' }}
+                    >
                       Moederdag
                     </td>
-                    <td className="border border-gray-200 px-4 py-3 text-gray-700">vrijdag 1, woensdag 6</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-700">
+                      vrijdag 1, woensdag 6
+                    </td>
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">Juni</td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">-</td>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">-</td>
                   </tr>
-                  <tr style={{ backgroundColor: "#F4EFE9" }}>
-                    <td className="border px-4 py-3 font-semibold text-gray-900" colSpan={3} style={{ borderColor: "#C9968B" }}>
-                      In de zomervakantie, van 13 juli tot 24 augustus, is er elke woensdagmiddag een speciaal programma voor kinderen. Het
-                      programma bestaat uit een workshop, picknick en spelletjes spelen. Ook kunnen er in juli en augustus kinderfeestjes
-                      gevierd worden.
+                  <tr style={{ backgroundColor: '#F4EFE9' }}>
+                    <td
+                      className="border px-4 py-3 font-semibold text-gray-900"
+                      colSpan={3}
+                      style={{ borderColor: '#C9968B' }}
+                    >
+                      In de zomervakantie, van 13 juli tot 24 augustus, is er elke woensdagmiddag
+                      een speciaal programma voor kinderen. Het programma bestaat uit een workshop,
+                      picknick en spelletjes spelen. Ook kunnen er in juli en augustus
+                      kinderfeestjes gevierd worden.
                     </td>
                   </tr>
                   <tr className="bg-gray-50">
@@ -400,17 +477,27 @@ export default function App() {
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">November</td>
-                    <td className="border border-gray-200 px-4 py-3 font-semibold" style={{ color: "#C9968B" }}>
+                    <td
+                      className="border border-gray-200 px-4 py-3 font-semibold"
+                      style={{ color: '#C9968B' }}
+                    >
                       Sinterklaas
                     </td>
-                    <td className="border border-gray-200 px-4 py-3 text-gray-700">woensdag 4, zaterdag 7</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-700">
+                      woensdag 4, zaterdag 7
+                    </td>
                   </tr>
                   <tr>
                     <td className="border border-gray-200 px-4 py-3 text-gray-700">December</td>
-                    <td className="border border-gray-200 px-4 py-3 font-semibold" style={{ color: "#C9968B" }}>
+                    <td
+                      className="border border-gray-200 px-4 py-3 font-semibold"
+                      style={{ color: '#C9968B' }}
+                    >
                       Kerst
                     </td>
-                    <td className="border border-gray-200 px-4 py-3 text-gray-700">woensdag 9, zaterdag 12</td>
+                    <td className="border border-gray-200 px-4 py-3 text-gray-700">
+                      woensdag 9, zaterdag 12
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -418,15 +505,22 @@ export default function App() {
 
             <div className="space-y-4 text-center text-gray-700">
               <p>
-                De kinderworkshops op <strong>woensdag</strong> zijn van <strong>14:00 tot 16:00 uur</strong>. Op <strong>vrijdag</strong>{" "}
-                kunnen de kinderen genieten van een workshop van <strong>15:00 tot 17:00 uur</strong>.
+                De kinderworkshops op <strong>woensdag</strong> zijn van{' '}
+                <strong>14:00 tot 16:00 uur</strong>. Op <strong>vrijdag</strong> kunnen de kinderen
+                genieten van een workshop van <strong>15:00 tot 17:00 uur</strong>.
               </p>
-              <p className="font-semibold text-lg" style={{ color: "#C9968B" }}>
-                Voor € 15,00 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de Siterhof!
+              <p className="font-semibold text-lg" style={{ color: '#C9968B' }}>
+                Voor € 15,00 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de
+                Siterhof!
               </p>
               <p className="text-sm">
-                Zoals altijd wordt er nog een aparte mail met foto gestuurd. Wil je dit ook ontvangen, stuur ons even je mailadres naar{" "}
-                <a href="mailto:info@siterhof.com" className="hover:underline" style={{ color: "#C9968B" }}>
+                Zoals altijd wordt er nog een aparte mail met foto gestuurd. Wil je dit ook
+                ontvangen, stuur ons even je mailadres naar{' '}
+                <a
+                  href="mailto:info@siterhof.com"
+                  className="hover:underline"
+                  style={{ color: '#C9968B' }}
+                >
                   info@siterhof.com
                 </a>
               </p>
@@ -435,26 +529,32 @@ export default function App() {
 
           {/* Zomervakantieprogramma */}
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Zomervakantieprogramma ☀️</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              Zomervakantieprogramma ☀️
+            </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-gray-700 mb-4">
-                  In de zomervakantie hebben we elke woensdagmiddag een speciaal programma voor kinderen. De kinderen kunnen dan bij ons
-                  terecht voor een gezellige middag.
+                  In de zomervakantie hebben we elke woensdagmiddag een speciaal programma voor
+                  kinderen. De kinderen kunnen dan bij ons terecht voor een gezellige middag.
                 </p>
                 <div className="space-y-3 text-gray-700">
-                  <p className="font-semibold" style={{ color: "#C9968B" }}>
+                  <p className="font-semibold" style={{ color: '#C9968B' }}>
                     Aanvang: 12:30 uur
                   </p>
                   <p>We beginnen met een gezellige picknick in de tuin!</p>
                   <p>
-                    Daarna starten we met de workshop. In de pauze genieten we van iets lekkers en iets fris te drinken en spelen we in de
-                    tuin en zijn er allerlei spelletjes te spelen.
+                    Daarna starten we met de workshop. In de pauze genieten we van iets lekkers en
+                    iets fris te drinken en spelen we in de tuin en zijn er allerlei spelletjes te
+                    spelen.
                   </p>
-                  <p className="font-semibold" style={{ color: "#C9968B" }}>
+                  <p className="font-semibold" style={{ color: '#C9968B' }}>
                     Einde: 16:30 uur
                   </p>
-                  <p>De kinderen kunnen kiezen uit verschillende workshops, vraag naar de mogelijkheden.</p>
+                  <p>
+                    De kinderen kunnen kiezen uit verschillende workshops, vraag naar de
+                    mogelijkheden.
+                  </p>
                 </div>
               </div>
               <div>
@@ -463,9 +563,14 @@ export default function App() {
                   alt="Zomervakantie picknick"
                   className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
                 />
-                <div className="text-white p-6 rounded-lg text-center" style={{ backgroundColor: "#C9968B" }}>
+                <div
+                  className="text-white p-6 rounded-lg text-center"
+                  style={{ backgroundColor: '#C9968B' }}
+                >
                   <p className="text-xl font-bold mb-2">€ 20,00 per kind</p>
-                  <p className="text-sm">Aanmelden voor deze gezellige middag kan alleen via onze site.</p>
+                  <p className="text-sm">
+                    Aanmelden voor deze gezellige middag kan alleen via onze site.
+                  </p>
                 </div>
               </div>
             </div>
@@ -507,17 +612,18 @@ export default function App() {
           <div className="mb-12">
             <div className="max-w-3xl mx-auto text-center mb-8">
               <p className="text-xl text-gray-700 mb-6">
-                Ook de tieners zijn uiteraard welkom. De prijzen zijn vanaf € 16,50 per persoon. Vraag naar de mogelijkheden.
+                Ook de tieners zijn uiteraard welkom. De prijzen zijn vanaf € 16,50 per persoon.
+                Vraag naar de mogelijkheden.
               </p>
               <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection('contact')}
                 className="px-6 py-3 text-white rounded-lg transition-colors"
-                style={{ backgroundColor: "#C9968B" }}
+                style={{ backgroundColor: '#C9968B' }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#B87E72";
+                  e.currentTarget.style.backgroundColor = '#B87E72';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C9968B";
+                  e.currentTarget.style.backgroundColor = '#C9968B';
                 }}
               >
                 Neem contact op
@@ -527,16 +633,32 @@ export default function App() {
             {/* Workshop examples gallery */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
               <div>
-                <img src={teenImage4} alt="Decoratieve vogelhuisjes workshop" className="w-full h-48 object-cover rounded-lg shadow-lg" />
+                <img
+                  src={teenImage4}
+                  alt="Decoratieve vogelhuisjes workshop"
+                  className="w-full h-48 object-cover rounded-lg shadow-lg"
+                />
               </div>
               <div>
-                <img src={teenImage1} alt="Droomvanger workshop" className="w-full h-48 object-cover rounded-lg shadow-lg" />
+                <img
+                  src={teenImage1}
+                  alt="Droomvanger workshop"
+                  className="w-full h-48 object-cover rounded-lg shadow-lg"
+                />
               </div>
               <div>
-                <img src={teenImage2} alt="Sleutelhangers maken" className="w-full h-48 object-cover rounded-lg shadow-lg" />
+                <img
+                  src={teenImage2}
+                  alt="Sleutelhangers maken"
+                  className="w-full h-48 object-cover rounded-lg shadow-lg"
+                />
               </div>
               <div>
-                <img src={teenImage3} alt="Creatieve knutselwerkjes" className="w-full h-48 object-cover rounded-lg shadow-lg" />
+                <img
+                  src={teenImage3}
+                  alt="Creatieve knutselwerkjes"
+                  className="w-full h-48 object-cover rounded-lg shadow-lg"
+                />
               </div>
             </div>
           </div>
@@ -544,7 +666,7 @@ export default function App() {
       </section>
 
       {/* Over Section */}
-      <section id="over" className="py-20" style={{ backgroundColor: "#F4EFE9" }}>
+      <section id="over" className="py-20" style={{ backgroundColor: '#F4EFE9' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Over De Siterhof</h2>
@@ -558,13 +680,14 @@ export default function App() {
                     src={carrieImage}
                     alt="Carrie"
                     className="w-20 h-20 rounded-full object-cover ring-4"
-                    style={{ ringColor: "#F4EFE9" }}
+                    style={{ ringColor: '#F4EFE9' }}
                   />
                   <h3 className="text-2xl font-bold text-gray-900">Carrie</h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  Ik ben Carrie en ik geef met veel enthousiasme creatieve workshops. Mijn doel is dat iedereen van groot tot klein een
-                  gezellige middag/avond heeft en trots naar huis gaat met zijn eigen gemaakte creatie!
+                  Ik ben Carrie en ik geef met veel enthousiasme creatieve workshops. Mijn doel is
+                  dat iedereen van groot tot klein een gezellige middag/avond heeft en trots naar
+                  huis gaat met zijn eigen gemaakte creatie!
                 </p>
               </div>
 
@@ -572,22 +695,27 @@ export default function App() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Over de Siterhof</h3>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    In het landelijke, heuvelachtige gebied ten zuiden van Sittard vind je de Siterhof. Een sfeervolle locatie in de
-                    voormalige schuren van een oude carréboerderij net over de Duitse grens in het kleine dorpje Hillensberg, waar een grote
-                    verscheidenheid aan creatieve workshops wordt gegeven.
+                    In het landelijke, heuvelachtige gebied ten zuiden van Sittard vind je de
+                    Siterhof. Een sfeervolle locatie in de voormalige schuren van een oude
+                    carréboerderij net over de Duitse grens in het kleine dorpje Hillensberg, waar
+                    een grote verscheidenheid aan creatieve workshops wordt gegeven.
                   </p>
                   <p>
-                    Ook organiseren wij creatieve workshops voor kinderen en kinderfeestjes. Bij alle creatieve workshops ligt de nadruk op
-                    het werken met natuurlijke materialen.
+                    Ook organiseren wij creatieve workshops voor kinderen en kinderfeestjes. Bij
+                    alle creatieve workshops ligt de nadruk op het werken met natuurlijke
+                    materialen.
                   </p>
-                  <p className="font-semibold pt-2" style={{ color: "#C9968B" }}>
+                  <p className="font-semibold pt-2" style={{ color: '#C9968B' }}>
                     Kom gerust eens een keer langs voor een kopje koffie!
                   </p>
                 </div>
               </div>
 
-              <div className="border-l-4 p-5 rounded-lg shadow-md" style={{ backgroundColor: "#FEF3E2", borderColor: "#D97706" }}>
-                <p className="font-semibold flex items-center gap-2" style={{ color: "#92400E" }}>
+              <div
+                className="border-l-4 p-5 rounded-lg shadow-md"
+                style={{ backgroundColor: '#FEF3E2', borderColor: '#D97706' }}
+              >
+                <p className="font-semibold flex items-center gap-2" style={{ color: '#92400E' }}>
                   <span className="text-2xl">⚠️</span>
                   <span>Er kan bij ons helaas niet gepind worden!</span>
                 </p>
@@ -596,13 +724,17 @@ export default function App() {
 
             <div className="space-y-6">
               <div className="relative overflow-hidden rounded-xl shadow-xl">
-                <ImageWithFallback src={siterhofImage} alt="De Siterhof boerderij" className="w-full h-80 object-cover" />
+                <ImageWithFallback
+                  src={siterhofImage}
+                  alt="De Siterhof boerderij"
+                  className="w-full h-80 object-cover"
+                />
               </div>
 
               <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-lg" style={{ backgroundColor: "#F4EFE9" }}>
-                    <MapPin style={{ color: "#C9968B" }} size={24} />
+                  <div className="p-3 rounded-lg" style={{ backgroundColor: '#F4EFE9' }}>
+                    <MapPin style={{ color: '#C9968B' }} size={24} />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Locatie</h3>
                 </div>
@@ -613,13 +745,13 @@ export default function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block hover:underline transition-colors"
-                    style={{ color: "#C9968B" }}
+                    style={{ color: '#C9968B' }}
                   >
                     <p>Bergstrasse 27</p>
                     <p>52538 Hillensberg (Selfkant)</p>
                   </a>
                   <div className="mt-4 pt-4 border-t border-gray-200">
-                    <p className="text-sm font-medium" style={{ color: "#C9968B" }}>
+                    <p className="text-sm font-medium" style={{ color: '#C9968B' }}>
                       Net over de Duitse grens
                     </p>
                   </div>
@@ -639,30 +771,33 @@ export default function App() {
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <div className="p-8 rounded-lg shadow-lg text-center" style={{ backgroundColor: "#F4EFE9" }}>
-              <Mail className="mx-auto mb-4" style={{ color: "#C9968B" }} size={48} />
+            <div
+              className="p-8 rounded-lg shadow-lg text-center"
+              style={{ backgroundColor: '#F4EFE9' }}
+            >
+              <Mail className="mx-auto mb-4" style={{ color: '#C9968B' }} size={48} />
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Stuur ons een e-mail</h3>
               <a
                 href="mailto:info@siterhof.com"
                 className="inline-block px-8 py-3 text-white rounded-lg transition-colors text-lg shadow-lg"
-                style={{ backgroundColor: "#C9968B" }}
+                style={{ backgroundColor: '#C9968B' }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#B87E72";
+                  e.currentTarget.style.backgroundColor = '#B87E72';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C9968B";
+                  e.currentTarget.style.backgroundColor = '#C9968B';
                 }}
               >
                 Neem nu contact op
               </a>
               <p className="mt-6 text-gray-700">
-                Volg De Siterhof natuurlijk ook op{" "}
+                Volg De Siterhof natuurlijk ook op{' '}
                 <a
                   href="https://www.facebook.com/DeSiterhof"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline transition-colors"
-                  style={{ color: "#C9968B" }}
+                  style={{ color: '#C9968B' }}
                 >
                   Facebook
                 </a>
