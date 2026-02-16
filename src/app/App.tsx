@@ -42,29 +42,34 @@ export default function App() {
     const seoMetadata: Record<string, { title: string; description: string }> = {
       home: {
         title: "De Siterhof | Kinderfeestjes & Kinderworkshops Hillensberg",
-        description: "De Siterhof biedt creatieve kinderfeestjes, kinderworkshops en tienerfeestjes in Hillensberg (Selfkant). Kwaliteitsvol plezier voor kinderen!",
+        description:
+          "De Siterhof biedt creatieve kinderfeestjes, kinderworkshops en tienerfeestjes in Hillensberg (Selfkant). Kwaliteitsvol plezier voor kinderen!",
       },
       kinderfeestjes: {
         title: "Kinderfeestjes De Siterhof | Creatieve Workshops voor Kinderen",
-        description: "Organiseer het perfecte kinderfeestje bij De Siterhof. Creatieve workshops, veel plezier en trots naar huis. Hele jaar door beschikbaar.",
+        description:
+          "Organiseer het perfecte kinderfeestje bij De Siterhof. Creatieve workshops, veel plezier en trots naar huis. Hele jaar door beschikbaar.",
       },
       kinderworkshops: {
         title: "Kinderworkshops De Siterhof | Thema Creatieve Workshops",
-        description: "Maandelijkse thema-workshops voor kinderen (6+). Pasen, Moederdag, Sinterklaas, Kerst en zomervakantieprogramma. €16,50-€20,00 per kind.",
+        description:
+          "Maandelijkse thema-workshops voor kinderen (6+). Pasen, Moederdag, Sinterklaas, Kerst en zomervakantieprogramma. € 16,50-€ 20,00 per kind.",
       },
       tienerfeestjes: {
         title: "Tienerfeestjes De Siterhof | Workshops voor Tieners",
-        description: "Ook tieners zijn welkom bij De Siterhof! Creatieve feestjes en workshops voor jongeren. Prijzen vanaf €16,50 per persoon.",
+        description:
+          "Ook tieners zijn welkom bij De Siterhof! Creatieve feestjes en workshops voor jongeren. Prijzen vanaf €16,50 per persoon.",
       },
       over: {
         title: "Over De Siterhof | Creatieve Boerderij Hillensberg",
-        description: "Leer De Siterhof kennen. Een sfeervolle locatie in een voormalige carréboerderij met creatieve workshops met natuurlijke materialen.",
+        description:
+          "Leer De Siterhof kennen. Een sfeervolle locatie in een voormalige carréboerderij met creatieve workshops met natuurlijke materialen.",
       },
     };
 
     const metadata = seoMetadata[activeSection] || seoMetadata.home;
     document.title = metadata.title;
-    
+
     // Update or create meta description
     let metaDescription = document.querySelector("meta[name='description']");
     if (!metaDescription) {
@@ -263,7 +268,7 @@ export default function App() {
                     <li>• Duur: ongeveer 2,5 uur</li>
                     <li>• Minimaal 6 kinderen</li>
                     <li>• Minimumleeftijd: 6 jaar</li>
-                    <li>• Prijs: vanaf €16,50 per kind</li>
+                    <li>• Prijs: vanaf € 16,50 per kind</li>
                   </ul>
                 </div>
                 <p className="font-semibold" style={{ color: "#C9968B" }}>
@@ -273,26 +278,14 @@ export default function App() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <ImageWithFallback
-                src={kinderfeestje1}
-                alt="Kinderfeestje"
-                className="w-full h-48 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src={kinderfeestje2}
-                alt="Creatieve workshop"
-                className="w-full h-48 object-cover rounded-lg shadow-md"
-              />
+              <ImageWithFallback src={kinderfeestje1} alt="Kinderfeestje" className="w-full h-48 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback src={kinderfeestje2} alt="Creatieve workshop" className="w-full h-48 object-cover rounded-lg shadow-md" />
               <ImageWithFallback
                 src={kinderfeestje3}
                 alt="Kinderen spelen in de tuin"
                 className="w-full h-48 object-cover rounded-lg shadow-md"
               />
-              <ImageWithFallback
-                src={kinderfeestje4}
-                alt="Boerderij"
-                className="w-full h-48 object-cover rounded-lg shadow-md"
-              />
+              <ImageWithFallback src={kinderfeestje4} alt="Boerderij" className="w-full h-48 object-cover rounded-lg shadow-md" />
             </div>
           </div>
         </div>
@@ -307,26 +300,10 @@ export default function App() {
 
           <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
             <div className="grid grid-cols-2 gap-4">
-              <ImageWithFallback
-                src={creatie1}
-                alt="Workshop voorbeeld 1"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src={creatie2}
-                alt="Workshop voorbeeld 2"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src={creatie3}
-                alt="Workshop voorbeeld 3"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
-              <ImageWithFallback
-                src={creatie4}
-                alt="Workshop voorbeeld 4"
-                className="w-full h-40 object-cover rounded-lg shadow-md"
-              />
+              <ImageWithFallback src={creatie1} alt="Workshop voorbeeld 1" className="w-full h-40 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback src={creatie2} alt="Workshop voorbeeld 2" className="w-full h-40 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback src={creatie3} alt="Workshop voorbeeld 3" className="w-full h-40 object-cover rounded-lg shadow-md" />
+              <ImageWithFallback src={creatie4} alt="Workshop voorbeeld 4" className="w-full h-40 object-cover rounded-lg shadow-md" />
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -352,7 +329,7 @@ export default function App() {
 
           {/* Jaaroverzicht - Annual Schedule */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Jaaroverzicht Kinderworkshops</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-10 mt-6 text-center">Jaaroverzicht Kinderworkshops 🗓️</h3>
 
             <div className="overflow-x-auto mb-6">
               <table className="w-full border-collapse">
@@ -406,7 +383,7 @@ export default function App() {
                   </tr>
                   <tr style={{ backgroundColor: "#F4EFE9" }}>
                     <td className="border px-4 py-3 font-semibold text-gray-900" colSpan={3} style={{ borderColor: "#C9968B" }}>
-                      In de zomervakantie (13 juli tot 24 augustus) is er elke woensdagmiddag een speciaal programma voor kinderen. Het
+                      In de zomervakantie, van 13 juli tot 24 augustus, is er elke woensdagmiddag een speciaal programma voor kinderen. Het
                       programma bestaat uit een workshop, picknick en spelletjes spelen. Ook kunnen er in juli en augustus kinderfeestjes
                       gevierd worden.
                     </td>
@@ -445,7 +422,7 @@ export default function App() {
                 kunnen de kinderen genieten van een workshop van <strong>15:00 tot 17:00 uur</strong>.
               </p>
               <p className="font-semibold text-lg" style={{ color: "#C9968B" }}>
-                Voor €15,00 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de Siterhof!
+                Voor € 15,00 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de Siterhof!
               </p>
               <p className="text-sm">
                 Zoals altijd wordt er nog een aparte mail met foto gestuurd. Wil je dit ook ontvangen, stuur ons even je mailadres naar{" "}
@@ -458,7 +435,7 @@ export default function App() {
 
           {/* Zomervakantieprogramma */}
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Zomervakantieprogramma</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Zomervakantieprogramma ☀️</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-gray-700 mb-4">
@@ -487,7 +464,7 @@ export default function App() {
                   className="w-full h-64 object-cover rounded-lg shadow-md mb-4"
                 />
                 <div className="text-white p-6 rounded-lg text-center" style={{ backgroundColor: "#C9968B" }}>
-                  <p className="text-xl font-bold mb-2">€20,00 per kind</p>
+                  <p className="text-xl font-bold mb-2">€ 20,00 per kind</p>
                   <p className="text-sm">Aanmelden voor deze gezellige middag kan alleen via onze site.</p>
                 </div>
               </div>
@@ -519,7 +496,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
 
       {/* Tienerfeestjes Section */}
       <section id="tienerfeestjes" className="py-20 bg-white">
@@ -596,7 +572,7 @@ export default function App() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Over de Siterhof</h3>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    In het landelijke, heuvelachtige gebied ten zuiden van Sittard vindt u de Siterhof. Een sfeervolle locatie in de
+                    In het landelijke, heuvelachtige gebied ten zuiden van Sittard vind je de Siterhof. Een sfeervolle locatie in de
                     voormalige schuren van een oude carréboerderij net over de Duitse grens in het kleine dorpje Hillensberg, waar een grote
                     verscheidenheid aan creatieve workshops wordt gegeven.
                   </p>
@@ -653,7 +629,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-white">
