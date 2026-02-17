@@ -479,7 +479,7 @@ export default function App() {
                 genieten van een workshop van <strong>15:00 tot 17:00 uur</strong>.
               </p>
               <p className="font-semibold text-lg text-brand-primary">
-                Voor € 15,00 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de
+                Voor € 16,50 per kind kan er al een schitterend knutselwerkje gemaakt worden bij de
                 Siterhof!
               </p>
               <p className="text-sm">
